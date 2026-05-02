@@ -914,15 +914,152 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
   .t-item[data-side="R"] .t-year{grid-column:1;text-align:left;padding:0 0 6px}
   .t-item::before{left:18px}
 }
+@media (max-width: 1080px){
+  .vs{grid-template-columns: 1fr}
+  .vs-side, .vs-center{order: 2}
+  .vs-center{order:1}
+  .arsenal-grid{grid-template-columns: repeat(2,1fr)}
+  .kombat-grid{grid-template-columns: repeat(2,1fr)}
+  .training-grid{grid-template-columns: 1fr}
+  .kontact-cards{grid-template-columns: repeat(2,1fr)}
+
+  .timeline::before{left:18px}
+  .t-item{grid-template-columns: 1fr; padding-left: 40px}
+  .t-item[data-side="L"] .t-card,
+  .t-item[data-side="R"] .t-card{grid-column:1}
+  .t-item[data-side="L"] .t-year,
+  .t-item[data-side="R"] .t-year{grid-column:1;text-align:left;padding:0 0 6px}
+  .t-item::before{left:18px}
+}
 @media (max-width: 720px){
-  .topbar{grid-template-columns:1fr;gap:10px}
-  .topbar-left{justify-content:flex-start}
-  .topnav{justify-self:flex-start;gap:2px}
-  .topnav a{padding:6px 10px;font-size:13px}
-  .topbar-right{display:none}
-  .arsenal-grid, .kombat-grid, .kontact-cards{grid-template-columns: 1fr}
-  .hero{padding: 40px 16px 80px}
-  .section{padding: 60px 16px}
+  /* TOPBAR — 2 rows: brand + horizontal-scroll nav */
+  .topbar{
+    grid-template-columns: 1fr auto;
+    gap: 8px 12px;
+    padding: 10px 14px;
+  }
+  .topbar-left{justify-content:flex-start; min-width:0}
+  .logo-name{font-size:18px}
+  .logo-sub{font-size:9px; letter-spacing:.22em}
+  .topbar-right{justify-self:end; display:block}
+  .hp-num{font-size:11px}
+  .hp-bar{width:80px; height:6px}
+  .topnav{
+    grid-column: 1 / -1;
+    justify-self:stretch;
+    flex-wrap: nowrap;
+    gap: 2px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .topnav::-webkit-scrollbar{display:none}
+  .topnav a{
+    padding:8px 12px; font-size:13px;
+    flex: 0 0 auto; white-space:nowrap;
+  }
+
+  /* BOOT */
+  .boot{padding: 0 20px}
+  .boot-stack svg{width: 140px !important; height: 140px !important}
+  .boot-title{font-size: clamp(38px, 14vw, 72px); letter-spacing:.1em}
+  .boot-sub{font-size:10px; letter-spacing:.3em}
+  .boot-btn{font-size:14px; padding: 12px 22px; letter-spacing:.2em}
+
+  /* HERO / VS */
+  .hero{padding: 28px 14px 70px; min-height: auto}
+  .hud{
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 14px;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+  }
+  .hud-center{
+    grid-column: 1 / -1; order: -1;
+    text-align:center; padding: 6px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .hud-name{font-size:11px; letter-spacing:.2em}
+  .hud-life{height:10px}
+  .hud-rounds i{width:8px; height:8px}
+  .hud-timer{font-size: 28px}
+
+  .vs{gap: 20px}
+  .vs-first, .vs-last{font-size: clamp(40px, 13vw, 64px); letter-spacing:.02em}
+  .vs-vs{font-size: clamp(56px, 18vw, 88px)}
+  .vs-title{font-size: 12px; letter-spacing:.18em}
+  .vs-flavor{font-size:13px}
+  .silhouette{max-width: 260px; aspect-ratio: 4/5}
+  .sil-mono{font-size: clamp(64px, 18vw, 110px)}
+  .stat-card{max-width: 100%; padding: 16px}
+  .stats li{grid-template-columns: 70px 1fr 32px; font-size:10px}
+  .stat-meta{font-size:10px; letter-spacing:.05em}
+  .stat-card h4{font-size:14px; letter-spacing:.2em}
+
+  .hero-cta{flex-direction: column; gap:10px; margin-top: 24px}
+  .btn-primary, .btn-ghost{width:100%; text-align:center; font-size:14px; padding: 14px 18px}
+
+  /* SECTIONS */
+  .section{padding: 56px 14px}
+  .section-head{margin-bottom: 36px}
+  .section-h{font-size: clamp(28px, 8vw, 44px); letter-spacing:.04em}
+  .select-tag{font-size:10px; letter-spacing:.3em}
+
+  /* ARSENAL */
+  .arsenal-grid, .kombat-grid, .kontact-cards, .training-grid{grid-template-columns: 1fr; gap:14px}
+  .weapon{padding:18px}
+
+  /* TIMELINE */
+  .t-item{padding-left: 32px}
+  .t-card{padding:16px}
+
+  /* TRAINING */
+  .train-card{grid-template-columns: 1fr}
+  .train-card > div:first-child{
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    flex-direction:row; justify-content:flex-start; gap:12px;
+    padding: 12px 16px;
+  }
+
+  /* KONTACT */
+  .kontact{padding: 60px 14px}
+  .kontact-h{font-size: clamp(40px, 13vw, 80px); letter-spacing:.04em}
+  .kontact-tag{font-size:11px; letter-spacing:.3em}
+
+  /* FOOTER */
+  .foot{padding: 16px 14px; gap:6px; font-size:10px; letter-spacing:.18em; flex-direction:column; align-items:flex-start}
+
+  /* Reduce overlay intensity on mobile */
+  .scanlines{opacity:.35}
+  .grain{opacity:.05}
+
+  /* Finishers */
+  .finishers{flex-direction:column; align-items:flex-start; gap:10px}
+}
+
+@media (max-width: 420px){
+  body{font-size: 14px}
+  .topnav a{padding:6px 10px; font-size:12px; letter-spacing:.12em}
+  .logo-name{font-size:16px}
+  .logo-sub{display:none}
+  .hp-bar{width:60px}
+  .vs-first, .vs-last{font-size: 44px}
+  .vs-vs{font-size: 64px}
+  .sil-mono{font-size: 72px}
+  .stat-card h4{font-size:12px}
+  .stats li{grid-template-columns: 60px 1fr 28px; font-size:9px; gap:6px}
+  .stat-meta{font-size:9px}
+  .section-h{font-size: 26px}
+  .kontact-h{font-size: 36px; letter-spacing:.02em}
+}
+
+/* iOS notch / safe areas */
+@supports (padding: env(safe-area-inset-left)){
+  .topbar{padding-left: max(14px, env(safe-area-inset-left)); padding-right: max(14px, env(safe-area-inset-right))}
+  .hero, .section, .foot, .kontact{padding-left: max(14px, env(safe-area-inset-left)); padding-right: max(14px, env(safe-area-inset-right))}
 }
 
 </style>
@@ -1124,7 +1261,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 
     <div class="hero-cta">
       <a class="btn-primary" href="#kombats">⚔ VIEW KOMBATS</a>
-      <a class="btn-ghost" href="/cdn-cgi/l/email-protection#0c6d646169682268656d6e39383d38394c6b616d6560226f6361">✉ HAIL THE FIGHTER</a>
+      <a class="btn-ghost" href="/cdn-cgi/l/email-protection#d0b1b8bdb5b4feb4b9b1b2e5e4e1e4e590b7bdb1b9bcfeb3bfbd">✉ HAIL THE FIGHTER</a>
     </div>
   </div>
 
@@ -1371,7 +1508,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
     </div>
     <div class="train-card">
       <div class="train-side">
-        <div class="train-year">2017 - 2018</div>
+        <div class="train-year">In Progress</div>
         <div class="train-tag">SECRET</div>
       </div>
       <div class="train-body">
@@ -1391,10 +1528,10 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
     <p class="kontact-p">Hiring, kontracting, or just want to throw down on a system architecture? Send the signal.</p>
 
     <div class="kontact-cards">
-      <a class="kc" href="/cdn-cgi/l/email-protection#42232a2f27266c262b2320777673767702252f232b2e6c212d2f">
+      <a class="kc" href="mailto:ahmed.diab54145@gmail.com">
         <div class="kc-i">✉</div>
         <div class="kc-l">EMAIL</div>
-        <div class="kc-v"><span class="__cf_email__" data-cfemail="a3c2cbcec6c78dc7cac2c19697929796e3c4cec2cacf8dc0ccce">[email&#160;protected]</span></div>
+        <div class="kc-v"><span class="__cf_email__" data-cfemail="ahmed.diab54145@gmail.com">ahmed.diab54145@gmail.com</span></div>
       </a>
       <a class="kc" href="tel:+971542281362">
         <div class="kc-i">📞</div>
