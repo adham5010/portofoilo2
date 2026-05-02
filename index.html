@@ -1,0 +1,1508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>DIBOOO™ 2026 — Senior Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   MORTAL KOMBAT PORTFOLIO · Ahmed Diab
+   Palette: dragon-blood crimson, electric yellow, deep onyx,
+   smoky bone, ember orange.
+   ============================================================ */
+
+:root{
+  --bg: #0a0608;
+  --bg-2: #120a0c;
+  --bg-3: #1a0e10;
+  --ink: #f3e8d2;            /* bone white */
+  --ink-dim: #b6a98c;
+  --ink-mute: #786a52;
+
+  --blood: #c1121f;
+  --blood-deep: #7a0a10;
+  --blood-dark: #3b0a0e;
+  --ember: #ff5a1f;
+  --gold: #ffd84a;           /* electric yellow */
+  --gold-deep: #c79a14;
+  --jade: #4ad29a;
+
+  --line: rgba(255,216,74,0.18);
+  --line-strong: rgba(255,216,74,0.45);
+
+  --shadow-deep: 0 30px 60px -20px rgba(0,0,0,.9), 0 0 0 1px rgba(255,216,74,.06) inset;
+  --shadow-blood: 0 0 0 1px rgba(193,18,31,.5), 0 0 30px rgba(193,18,31,.35);
+
+  --f-display: "Cinzel", "Times New Roman", serif;
+  --f-arcade: "Bebas Neue", "Impact", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-mono);
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-x:hidden;
+  background:
+    radial-gradient(1100px 600px at 80% -10%, rgba(193,18,31,.18), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgba(255,90,31,.10), transparent 60%),
+    linear-gradient(180deg, #0a0608 0%, #0b0608 60%, #06030400 100%),
+    #06030a;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+/* ====== Global overlays ====== */
+.scanlines{
+  position:fixed;inset:0;pointer-events:none;z-index:80;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0px,
+    rgba(255,255,255,0) 2px,
+    rgba(0,0,0,.18) 3px
+  );
+  mix-blend-mode:multiply;opacity:.55;
+}
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:81;opacity:.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
+}
+.vignette{
+  position:fixed;inset:0;pointer-events:none;z-index:79;
+  box-shadow: inset 0 0 220px 60px rgba(0,0,0,.85);
+}
+
+/* ====== Ambient FX ====== */
+.fx-layer{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden}
+.embers span{
+  position:absolute; bottom:-20px; width:4px; height:4px; border-radius:50%;
+  background: radial-gradient(circle, #ffd84a 0%, #ff5a1f 50%, transparent 80%);
+  box-shadow: 0 0 12px rgba(255,216,74,.8), 0 0 30px rgba(255,90,31,.5);
+  animation: emberRise 9s linear infinite;
+  opacity:0;
+}
+.embers span:nth-child(1){left:6%;animation-delay:0s;animation-duration:8s}
+.embers span:nth-child(2){left:12%;animation-delay:2s;animation-duration:11s;width:3px;height:3px}
+.embers span:nth-child(3){left:18%;animation-delay:4s;animation-duration:9s}
+.embers span:nth-child(4){left:24%;animation-delay:1s;animation-duration:10s;width:5px;height:5px}
+.embers span:nth-child(5){left:32%;animation-delay:3s;animation-duration:12s}
+.embers span:nth-child(6){left:40%;animation-delay:5s;animation-duration:8s;width:3px;height:3px}
+.embers span:nth-child(7){left:48%;animation-delay:0.5s;animation-duration:11s}
+.embers span:nth-child(8){left:55%;animation-delay:2.5s;animation-duration:9s}
+.embers span:nth-child(9){left:62%;animation-delay:4.5s;animation-duration:10s;width:5px;height:5px}
+.embers span:nth-child(10){left:69%;animation-delay:1.5s;animation-duration:12s}
+.embers span:nth-child(11){left:75%;animation-delay:3.5s;animation-duration:8s}
+.embers span:nth-child(12){left:82%;animation-delay:0.2s;animation-duration:11s}
+.embers span:nth-child(13){left:88%;animation-delay:2.2s;animation-duration:9s;width:3px;height:3px}
+.embers span:nth-child(14){left:94%;animation-delay:4.2s;animation-duration:10s}
+.embers span:nth-child(15){left:36%;animation-delay:6s;animation-duration:9s}
+.embers span:nth-child(16){left:58%;animation-delay:7s;animation-duration:11s;width:5px;height:5px}
+.embers span:nth-child(17){left:78%;animation-delay:5.5s;animation-duration:12s}
+.embers span:nth-child(18){left:22%;animation-delay:6.5s;animation-duration:10s}
+@keyframes emberRise{
+  0%{opacity:0;transform:translateY(0) translateX(0) scale(.8)}
+  10%{opacity:1}
+  50%{transform:translateY(-50vh) translateX(20px) scale(1)}
+  90%{opacity:.6}
+  100%{opacity:0;transform:translateY(-100vh) translateX(-20px) scale(.4)}
+}
+.lightning{
+  position:absolute; width:120px; height:380px;
+  filter: drop-shadow(0 0 12px rgba(255,216,74,.9)) drop-shadow(0 0 30px rgba(255,216,74,.5));
+  opacity:0;
+}
+.lightning-1{top:10%;left:5%;animation: bolt 7s ease-in-out infinite}
+.lightning-2{top:18%;right:6%;animation: bolt 6s ease-in-out 3s infinite}
+@keyframes bolt{
+  0%,100%{opacity:0}
+  48%{opacity:0}
+  50%{opacity:1;transform:scaleY(1)}
+  52%{opacity:0}
+  54%{opacity:1}
+  56%{opacity:0}
+}
+.runes-bg span{
+  position:absolute; left:var(--x); top:var(--y);
+  font-size: 28px; color: var(--gold); opacity:.18;
+  animation: floatRune 8s ease-in-out infinite var(--d);
+  filter: drop-shadow(0 0 8px rgba(255,216,74,.4));
+}
+@keyframes floatRune{
+  0%,100%{transform:translateY(0) rotate(0deg);opacity:.18}
+  50%{transform:translateY(-20px) rotate(180deg);opacity:.4}
+}
+
+/* ============================================================
+   BOOT / INTRO
+   ============================================================ */
+.boot{
+  position:fixed; inset:0; z-index:100;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(60% 50% at 50% 45%, rgba(193,18,31,.35), rgba(0,0,0,.0) 65%),
+    linear-gradient(180deg, #0a0507 0%, #1b0608 50%, #0a0507 100%);
+  transition: opacity .8s ease, visibility .8s;
+}
+.boot.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.boot-grain{
+  position:absolute;inset:0;opacity:.18;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.boot-stack{position:relative;text-align:center}
+.boot-dragon{margin-bottom:8px}
+@keyframes bootPulse{
+  0%,100%{transform:scale(1) rotate(-1deg);filter:drop-shadow(0 0 18px rgba(255,216,74,.3)) drop-shadow(0 0 40px rgba(193,18,31,.4))}
+  50%{transform:scale(1.04) rotate(1deg);filter:drop-shadow(0 0 30px rgba(255,216,74,.55)) drop-shadow(0 0 80px rgba(193,18,31,.7))}
+}
+.boot-title{
+  font-family: var(--f-display);
+  font-weight:900;
+  font-size: clamp(48px, 9vw, 120px);
+  letter-spacing: .14em;
+  background: linear-gradient(180deg, #ffe082 0%, #c79a14 45%, #7a0a10 100%);
+  -webkit-background-clip: text; background-clip:text; color: transparent;
+  text-shadow: 0 4px 0 rgba(0,0,0,.4);
+  margin-top: 8px;
+}
+.boot-title span{
+  background: linear-gradient(180deg, #ff7a3a 0%, #c1121f 50%, #3b0a0e 100%);
+  -webkit-background-clip: text; background-clip:text; color: transparent;
+}
+.boot-tm{
+  font-size:.22em; vertical-align:super;
+  -webkit-text-fill-color: #ffd84a; color:#ffd84a;
+  letter-spacing:0; margin-left:6px;
+  text-shadow: 0 0 12px rgba(255,216,74,.7);
+}
+.tm{ font-size:9px; color:var(--gold); margin-left:2px; letter-spacing:0; vertical-align:super; }
+.tm-big{
+  font-size:.18em; vertical-align:super;
+  -webkit-text-fill-color: #ffd84a; color:#ffd84a;
+  margin-left:6px; letter-spacing:0;
+  text-shadow: 0 0 18px rgba(255,216,74,.8);
+}
+.boot-sub{
+  font-family: var(--f-mono);
+  letter-spacing:.4em;
+  color:var(--gold);
+  font-size:11px;
+  margin: 6px 0 28px;
+  animation: blink 1.2s steps(2) infinite;
+}
+@keyframes blink{50%{opacity:.25}}
+.boot-btn{
+  font-family: var(--f-arcade);
+  letter-spacing:.25em;
+  font-size: 22px;
+  color:#0a0608;
+  background: linear-gradient(180deg,#ffe082, #c79a14);
+  padding: 14px 36px;
+  border: 1px solid #ffe082;
+  box-shadow: 0 0 0 3px #0a0608, 0 0 0 4px #c1121f, 0 18px 40px rgba(193,18,31,.4);
+  clip-path: polygon(8% 0,100% 0,92% 100%,0 100%);
+  transition: transform .15s ease, filter .15s;
+}
+.boot-btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+
+/* ============================================================
+   AD MONOGRAM EMBLEM
+   ============================================================ */
+.ad-emblem{display:block}
+.ad-boot{
+  filter: drop-shadow(0 0 24px rgba(255,216,74,.45))
+          drop-shadow(0 0 60px rgba(193,18,31,.55));
+  animation: adBootPulse 3s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+@keyframes adBootPulse{
+  0%,100%{transform:scale(1);filter:drop-shadow(0 0 22px rgba(255,216,74,.4)) drop-shadow(0 0 50px rgba(193,18,31,.5))}
+  50%{transform:scale(1.03);filter:drop-shadow(0 0 34px rgba(255,216,74,.7)) drop-shadow(0 0 90px rgba(193,18,31,.85))}
+}
+.ad-topbar{
+  filter: drop-shadow(0 0 6px rgba(193,18,31,.6));
+}
+@media (prefers-reduced-motion: reduce){
+  .ad-boot{animation:none}
+}
+
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+.topbar{
+  position:sticky; top:0; z-index:60;
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items:center;
+  gap: 24px;
+  padding: 14px 28px;
+  background: linear-gradient(180deg, rgba(10,6,8,.95), rgba(10,6,8,.6));
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.logo-mark{
+  width:40px;height:40px;display:grid;place-items:center;
+  border:1px solid var(--line-strong); border-radius:50%;
+  background: radial-gradient(circle at 50% 40%, rgba(255,216,74,.18), transparent 70%);
+}
+.logo-name{font-family:var(--f-arcade);font-size:22px;letter-spacing:.18em;color:var(--gold)}
+.logo-sub{font-size:10px;letter-spacing:.3em;color:var(--ink-mute);text-transform:uppercase}
+
+.topnav{display:flex;gap:6px;justify-self:center;flex-wrap:wrap;justify-content:center}
+.topnav a{
+  font-family:var(--f-arcade); font-size:15px; letter-spacing:.18em;
+  padding: 8px 14px; color:var(--ink-dim);
+  border:1px solid transparent; transition: all .15s;
+  position:relative;
+}
+.topnav a:hover{ color:var(--gold); border-color:var(--line); background: rgba(255,216,74,.05);}
+.topnav a:hover::after{
+  content:"";position:absolute;left:6px;right:6px;bottom:2px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+.topbar-right{justify-self:end}
+.hp{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.hp-label{font-size:9px;letter-spacing:.3em;color:var(--ink-mute)}
+.hp-bar{
+  width: 200px; height: 10px; background: #1a0a0c;
+  border:1px solid var(--blood-deep); position:relative;
+  box-shadow: inset 0 0 10px rgba(0,0,0,.6);
+}
+.hp-bar span{
+  display:block; height:100%;
+  background: linear-gradient(90deg, var(--blood) 0%, var(--ember) 60%, var(--gold) 100%);
+  box-shadow: 0 0 10px rgba(193,18,31,.6);
+}
+.hp-num{font-family:var(--f-arcade);font-size:14px;letter-spacing:.2em;color:var(--gold)}
+
+/* ============================================================
+   HERO / FIGHTER SELECT
+   ============================================================ */
+.hero{
+  position:relative; min-height: 92vh;
+  padding: 60px 28px 100px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg-flame{
+  position:absolute;inset:auto -10% -10% -10%;height:60%;
+  background:
+    radial-gradient(60% 90% at 50% 100%, rgba(193,18,31,.55), transparent 65%),
+    radial-gradient(40% 70% at 50% 100%, rgba(255,90,31,.45), transparent 70%);
+  filter: blur(2px);
+  animation: flameFlicker 3.4s ease-in-out infinite;
+}
+@keyframes flameFlicker{
+  0%,100%{transform:translateY(0) scale(1);opacity:.95}
+  50%{transform:translateY(-6px) scale(1.02);opacity:1}
+}
+.hero-bg-temple{
+  position:absolute;inset:0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'><g fill='%23120808' opacity='0.7'><path d='M0,520 L80,520 L80,360 L130,330 L180,360 L180,520 L260,520 L260,300 L350,260 L440,300 L440,520 L560,520 L560,200 L600,170 L640,200 L640,520 L760,520 L760,300 L850,260 L940,300 L940,520 L1020,520 L1020,360 L1070,330 L1120,360 L1120,520 L1200,520 L1200,600 L0,600 Z'/></g><g stroke='%23200a0d' stroke-width='1' opacity='0.6' fill='none'><path d='M560,200 L600,170 L640,200'/></g></svg>");
+  background-size: cover; background-position: bottom center;
+  opacity:.85;
+}
+.hero-bg-floor{
+  position:absolute;left:-20%;right:-20%;bottom:0;height:120px;
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(255,216,74,0) 0 38px,
+      rgba(255,216,74,.06) 38px 39px,
+      rgba(255,216,74,0) 39px 80px),
+    linear-gradient(180deg, transparent, rgba(0,0,0,.8));
+  transform: perspective(800px) rotateX(60deg);
+  transform-origin: bottom;
+  border-top: 1px solid rgba(255,216,74,.18);
+}
+
+.vs-wrap{position:relative;z-index:2;width:100%;max-width:1280px}
+
+.select-tag{
+  text-align:center;
+  font-family:var(--f-arcade);
+  letter-spacing:.5em; font-size:14px;
+  color:var(--gold);
+  margin-bottom:24px;
+  text-shadow: 0 0 10px rgba(255,216,74,.4);
+}
+.select-tag::before, .select-tag::after{content:"⟪ ";color:var(--blood)}
+.select-tag::after{content:" ⟫"}
+
+/* HUD */
+.hud{
+  display:grid; grid-template-columns: 1fr auto 1fr;
+  gap: 16px; align-items:center;
+  margin-bottom: 28px;
+  padding: 10px 14px;
+  border:1px solid var(--line);
+  background: linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,.2));
+  clip-path: polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+}
+.hud-bar{display:flex;flex-direction:column;gap:4px}
+.hud-bar-r{align-items:flex-end}
+.hud-name{font-family:var(--f-arcade);letter-spacing:.3em;color:var(--gold);font-size:14px}
+.hud-life{
+  width:100%;height:14px;background:#1a0a0c;
+  border:1px solid var(--blood-deep); position:relative;
+  box-shadow: inset 0 0 10px rgba(0,0,0,.6);
+}
+.hud-life span{
+  display:block;height:100%;
+  background: linear-gradient(90deg, var(--gold), var(--ember) 50%, var(--blood));
+  box-shadow: 0 0 14px rgba(255,216,74,.6);
+  animation: lifePulse 1.6s ease-in-out infinite;
+}
+.hud-life-r span{
+  background: linear-gradient(270deg, var(--gold), var(--ember) 50%, var(--blood));
+  margin-left:auto;
+}
+@keyframes lifePulse{50%{filter:brightness(1.25)}}
+.hud-rounds{display:flex;gap:6px}
+.hud-bar-r .hud-rounds{justify-content:flex-end}
+.hud-rounds i{
+  width:10px;height:10px;border:1px solid var(--blood-deep);
+  background:#1a0a0c;border-radius:50%;
+}
+.hud-rounds i.on{
+  background: radial-gradient(circle, var(--gold), var(--ember));
+  box-shadow: 0 0 8px rgba(255,216,74,.8);
+  border-color: var(--gold);
+}
+.hud-timer{
+  font-family:var(--f-display);font-weight:900;font-size:42px;
+  color: var(--gold); line-height:1;
+  text-shadow: 0 0 16px rgba(255,216,74,.7), 0 4px 0 rgba(0,0,0,.5);
+  animation: timerBlink 1s steps(2) infinite;
+  padding: 0 18px;
+  border-left:1px solid var(--line); border-right:1px solid var(--line);
+}
+@keyframes timerBlink{50%{color:var(--blood);text-shadow:0 0 16px rgba(193,18,31,.8)}}
+
+.vs{
+  display:grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 28px;
+  align-items:stretch;
+}
+
+.vs-side{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.silhouette{
+  position:relative;
+  width:100%; aspect-ratio: 4/5; max-width: 360px;
+  background:
+    radial-gradient(60% 50% at 50% 30%, rgba(193,18,31,.35), transparent 70%),
+    linear-gradient(180deg, #1a0a0c 0%, #06030480 100%);
+  border:1px solid var(--blood-deep);
+  box-shadow: var(--shadow-blood), var(--shadow-deep);
+  display:grid;place-items:center;
+  overflow:hidden;
+  clip-path: polygon(0 6%,6% 0,94% 0,100% 6%,100% 94%,94% 100%,6% 100%,0 94%);
+}
+.sil-glow{
+  position:absolute;inset:-20%;
+  background: conic-gradient(from 0deg, rgba(255,216,74,0), rgba(255,216,74,.4), rgba(193,18,31,.3), rgba(255,216,74,0));
+  filter: blur(30px); opacity:.55;
+  animation: sil 8s linear infinite;
+}
+@keyframes sil{to{transform:rotate(360deg)}}
+.sil-mono{
+  font-family: var(--f-display); font-weight:900;
+  font-size: clamp(80px, 12vw, 160px);
+  background: linear-gradient(180deg, #ffe082, #c1121f 70%, #3b0a0e);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:.04em;
+  position:relative; z-index:1;
+  text-shadow: 0 6px 0 rgba(0,0,0,.35);
+}
+.sil-runes{
+  position:absolute;inset:0;display:flex;justify-content:space-between;
+  padding: 12px 14px; pointer-events:none; z-index:2;
+  color: var(--gold); font-size:14px; opacity:.7;
+}
+.sil-runes span:nth-child(2){align-self:flex-end}
+.sil-runes span:nth-child(3){align-self:flex-end}
+.vs-tag{
+  position:absolute; left:14px; top:14px;
+  font-family:var(--f-arcade); letter-spacing:.4em; font-size:14px;
+  color:#0a0608; background:var(--gold); padding: 4px 10px;
+  clip-path: polygon(0 0,100% 0,90% 100%,0 100%);
+}
+
+.vs-center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding: 0 8px}
+.vs-name{
+  display:flex;flex-direction:column;align-items:center;line-height:.95;
+}
+.vs-first, .vs-last{
+  font-family: var(--f-display); font-weight:900;
+  font-size: clamp(48px, 7.5vw, 110px); letter-spacing:.04em;
+  background: linear-gradient(180deg, #fff7d8, #ffd84a 45%, #c79a14);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow: 0 6px 0 rgba(0,0,0,.4);
+}
+.vs-vs{
+  font-family: var(--f-display); font-weight:900;
+  font-size: clamp(80px, 12vw, 170px);
+  background: linear-gradient(180deg, #ff7a3a, #c1121f 50%, #3b0a0e);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:.04em; line-height:.9; margin: -10px 0;
+  filter: drop-shadow(0 0 20px rgba(193,18,31,.6));
+  animation: vsThrob 2.6s ease-in-out infinite;
+  position:relative;
+}
+.vs-first, .vs-last{position:relative;display:inline-block}
+.vs-first::before, .vs-first::after,
+.vs-last::before, .vs-last::after{
+  content: attr(data-text);
+  position:absolute; left:0; top:0; width:100%;
+  -webkit-background-clip:text; background-clip:text;
+  pointer-events:none;
+}
+.vs-first::before, .vs-last::before{
+  color: var(--blood); -webkit-text-fill-color:var(--blood);
+  background:none;
+  animation: glitchA 4s steps(1) infinite;
+  mix-blend-mode:screen;
+}
+.vs-first::after, .vs-last::after{
+  color: var(--gold); -webkit-text-fill-color:var(--gold);
+  background:none;
+  animation: glitchB 4s steps(1) infinite;
+  mix-blend-mode:screen;
+}
+@keyframes glitchA{
+  0%,92%,100%{opacity:0;transform:translate(0,0)}
+  93%{opacity:.7;transform:translate(-3px,2px);clip-path: inset(20% 0 60% 0)}
+  95%{opacity:.7;transform:translate(2px,-1px);clip-path: inset(60% 0 20% 0)}
+  97%{opacity:0}
+}
+@keyframes glitchB{
+  0%,92%,100%{opacity:0;transform:translate(0,0)}
+  94%{opacity:.6;transform:translate(3px,-2px);clip-path: inset(40% 0 40% 0)}
+  96%{opacity:.6;transform:translate(-2px,1px);clip-path: inset(10% 0 70% 0)}
+  98%{opacity:0}
+}
+@keyframes vsThrob{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+.vs-title{
+  margin-top: 16px;
+  font-family:var(--f-arcade);
+  letter-spacing:.35em; font-size:16px; color:var(--blood);
+}
+.vs-flavor{
+  margin-top: 10px; max-width: 460px;
+  color: var(--ink-dim); font-style:italic;
+  border-top:1px dashed var(--line);
+  border-bottom:1px dashed var(--line);
+  padding: 10px 0;
+}
+
+.stat-card{
+  width:100%; max-width: 360px;
+  background:
+    linear-gradient(180deg, rgba(255,216,74,.04), rgba(0,0,0,.6)),
+    repeating-linear-gradient(0deg, rgba(255,216,74,.04) 0 1px, transparent 1px 4px);
+  border:1px solid var(--line-strong);
+  box-shadow: var(--shadow-deep);
+  padding: 18px;
+  clip-path: polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));
+}
+.stat-card-title{
+  font-family:var(--f-arcade);letter-spacing:.4em;font-size:13px;color:var(--gold);
+  border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:14px;
+}
+.stats{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.stats li{display:grid;grid-template-columns: 80px 1fr 36px;gap:10px;align-items:center;font-size:11px;letter-spacing:.18em}
+.stats li span{color:var(--ink-dim)}
+.stats li i{display:block;height:8px;background:#1a0a0c;border:1px solid var(--blood-deep);position:relative}
+.stats li i b{
+  display:block;height:100%;
+  background: linear-gradient(90deg,var(--blood),var(--ember),var(--gold));
+  box-shadow: 0 0 10px rgba(193,18,31,.5);
+  animation: fillBar 1.4s ease forwards;
+  transform-origin: left;
+}
+@keyframes fillBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.stats li em{font-style:normal;color:var(--gold);font-family:var(--f-arcade);text-align:right}
+.stat-meta{
+  display:flex;flex-direction:column;gap:6px; margin-top:14px; font-size:11px; letter-spacing:.1em;
+  color:var(--ink-dim); border-top:1px dashed var(--line); padding-top:10px;
+}
+.stat-meta b{color:var(--gold);margin-right:8px;font-family:var(--f-arcade);letter-spacing:.25em;font-weight:400}
+
+.hero-cta{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+.btn-primary, .btn-ghost{
+  font-family:var(--f-arcade); letter-spacing:.25em; font-size:16px;
+  padding: 14px 26px; transition: transform .15s ease, filter .15s;
+  clip-path: polygon(8% 0,100% 0,92% 100%,0 100%);
+}
+.btn-primary{
+  color:#0a0608;
+  background: linear-gradient(180deg,#ffe082,#c79a14);
+  box-shadow: 0 0 0 3px #0a0608, 0 0 0 4px #c1121f, 0 10px 30px rgba(193,18,31,.4);
+}
+.btn-ghost{
+  color:var(--gold); border:1px solid var(--gold); background: rgba(255,216,74,.04);
+}
+.btn-primary:hover, .btn-ghost:hover{transform:translateY(-2px);filter:brightness(1.1)}
+
+.blood-drip{position:absolute;left:-2%;right:-2%;bottom:0;z-index:1;pointer-events:none}
+.blood-drip svg{display:block;width:104%;filter: drop-shadow(0 6px 14px rgba(193,18,31,.5))}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section{
+  position:relative; padding: 100px 28px;
+  border-top: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(10,6,8,1) 0%, rgba(20,8,10,1) 100%);
+}
+.section-dark{
+  background:
+    radial-gradient(800px 400px at 50% 0%, rgba(193,18,31,.18), transparent 60%),
+    linear-gradient(180deg, #08050680 0%, #06030480 100%),
+    #0a0608;
+}
+.section-head{
+  position:relative; max-width:1280px; margin: 0 auto 60px;
+  text-align:center;
+}
+.kanji{
+  position:absolute; left:50%; top:-30px; transform:translateX(-50%);
+  font-size: 240px; line-height:1; font-family: var(--f-display); font-weight:900;
+  color: var(--blood); opacity:.06; pointer-events:none;
+  text-shadow: 0 0 20px rgba(193,18,31,.6);
+}
+.section-title{
+  position:relative; z-index:1;
+  font-family: var(--f-display); font-weight:900;
+  font-size: clamp(36px, 5vw, 72px); letter-spacing:.08em;
+  background: linear-gradient(180deg, #fff7d8, #ffd84a 45%, #c79a14);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin: 0;
+}
+.section-sub{
+  font-family:var(--f-arcade); letter-spacing:.35em; color:var(--blood);
+  font-size:14px; margin-top:8px;
+}
+
+/* Arsenal */
+.arsenal-grid{
+  max-width:1280px;margin:0 auto;
+  display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+}
+.weapon{
+  position:relative;
+  padding: 22px 20px; min-height: 240px;
+  background:
+    linear-gradient(180deg, rgba(193,18,31,.10), rgba(0,0,0,.5)),
+    repeating-linear-gradient(45deg, rgba(255,216,74,.03) 0 2px, transparent 2px 6px);
+  border:1px solid var(--line);
+  box-shadow: var(--shadow-deep);
+  transition: transform .25s ease, border-color .25s, box-shadow .25s;
+  clip-path: polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+}
+.weapon::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background: radial-gradient(60% 50% at 50% 0%, rgba(255,216,74,.08), transparent 70%);
+}
+.weapon:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow: var(--shadow-deep), 0 0 30px rgba(255,216,74,.25)}
+.weapon-icon{
+  font-size: 34px; color: var(--gold);
+  filter: drop-shadow(0 0 10px rgba(255,216,74,.45));
+}
+.weapon-name{
+  font-family:var(--f-arcade); letter-spacing:.3em; font-size:18px; color:var(--gold);
+  margin: 8px 0 10px; border-bottom: 1px solid var(--line); padding-bottom:8px;
+}
+.weapon ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.weapon li{
+  position:relative; padding-left:18px; font-size:13px; color:var(--ink-dim);
+}
+.weapon li::before{
+  content:"▸"; position:absolute; left:0; color:var(--blood);
+}
+
+.finishers{
+  max-width:1280px;margin: 36px auto 0;
+  display:flex; align-items:center; flex-wrap:wrap; gap: 14px; justify-content:center;
+  border-top:1px dashed var(--line); padding-top:24px;
+}
+.finisher-tag{
+  font-family:var(--f-arcade); letter-spacing:.4em; font-size:14px; color:var(--blood);
+}
+.finisher-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.finisher-list span{
+  padding:6px 12px; border:1px solid var(--blood-deep);
+  font-family:var(--f-arcade); letter-spacing:.2em; font-size:13px;
+  color:var(--ink); background: rgba(193,18,31,.1);
+  clip-path: polygon(8% 0,100% 0,92% 100%,0 100%);
+}
+
+/* Timeline */
+.timeline{
+  list-style:none;padding:0;margin:0 auto;max-width:1100px;
+  position:relative;
+}
+.timeline::before{
+  content:""; position:absolute; left:50%; top:0; bottom:0; width:2px;
+  background: linear-gradient(180deg, transparent, var(--blood) 10%, var(--blood) 90%, transparent);
+  transform: translateX(-1px);
+  box-shadow: 0 0 20px rgba(193,18,31,.5);
+}
+.t-item{
+  position:relative; display:grid; grid-template-columns: 1fr 1fr; gap: 30px;
+  margin-bottom: 36px;
+}
+.t-item .t-year{
+  font-family: var(--f-arcade); letter-spacing:.3em; font-size:14px; color:var(--gold);
+  align-self:center;
+}
+.t-card{
+  background:
+    linear-gradient(180deg, rgba(20,10,12,.95), rgba(10,6,8,.95));
+  border:1px solid var(--line);
+  padding: 18px 20px;
+  position:relative;
+  box-shadow: var(--shadow-deep);
+  clip-path: polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+}
+.t-rank{
+  font-family:var(--f-arcade); letter-spacing:.3em; font-size:11px;
+  color:#0a0608; background: var(--gold);
+  display:inline-block; padding: 3px 10px;
+  margin-bottom: 8px;
+  clip-path: polygon(8% 0,100% 0,92% 100%,0 100%);
+}
+.t-card h3{
+  font-family: var(--f-display); font-weight:700;
+  font-size: 20px; margin: 4px 0 8px; color:var(--ink);
+  letter-spacing:.02em;
+}
+.t-card p{margin:0;color:var(--ink-dim);font-size:14px}
+.t-card em{color:var(--gold);font-style:normal}
+.t-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.t-tags span{
+  font-family:var(--f-mono); font-size:10px; letter-spacing:.18em;
+  padding:3px 8px; color:var(--gold);
+  border:1px solid var(--blood-deep); background: rgba(193,18,31,.1);
+}
+.t-item[data-side="L"] .t-card{ grid-column:1 }
+.t-item[data-side="L"] .t-year{ grid-column:2; text-align:left; padding-left:30px }
+.t-item[data-side="R"] .t-year{ grid-column:1; text-align:right; padding-right:30px }
+.t-item[data-side="R"] .t-card{ grid-column:2 }
+.t-item::before{
+  content:""; position:absolute; left:50%; top:14px; width:14px; height:14px;
+  background: var(--gold); border:2px solid #0a0608;
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: 0 0 0 2px var(--blood), 0 0 16px rgba(255,216,74,.5);
+}
+
+/* Kombats */
+.kombat-grid{
+  max-width: 1280px; margin:0 auto;
+  display:grid; grid-template-columns: repeat(3,1fr); gap:18px;
+}
+.kombat{
+  position:relative; padding: 16px;
+  border:1px solid var(--line);
+  background: linear-gradient(180deg, rgba(20,10,12,.95), rgba(10,6,8,.95));
+  box-shadow: var(--shadow-deep);
+  transition: transform .25s ease, border-color .25s, box-shadow .25s;
+  overflow:hidden;
+  clip-path: polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+}
+.kombat:hover{transform:translateY(-6px);border-color:var(--blood);box-shadow:var(--shadow-deep), 0 0 30px rgba(193,18,31,.3)}
+.kombat::before{
+  content:""; position:absolute; inset:0; z-index:1;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,216,74,.15) 50%, transparent 70%);
+  transform: translateX(-110%);
+  transition: transform .7s ease;
+  pointer-events:none;
+}
+.kombat:hover::before{ transform: translateX(110%) }
+.kombat-combo{
+  position:absolute; left:0; right:0; top:50%; transform:translateY(-50%);
+  text-align:center; font-family:var(--f-arcade);
+  letter-spacing:.4em; font-size:18px;
+  color:var(--gold); text-shadow: 0 0 20px rgba(255,216,74,.9), 0 0 4px #000;
+  opacity:0; pointer-events:none; z-index:3;
+  transition: opacity .25s ease;
+}
+.kombat:hover .kombat-combo{opacity:1; animation: comboShake .4s ease}
+@keyframes comboShake{
+  0%,100%{transform:translateY(-50%) translateX(0)}
+  25%{transform:translateY(-50%) translateX(-4px)}
+  75%{transform:translateY(-50%) translateX(4px)}
+}
+.kombat-rank{
+  position:absolute; top:10px; right:10px; z-index:2;
+  font-family:var(--f-arcade); letter-spacing:.25em; font-size:11px;
+  color:var(--gold); background: rgba(0,0,0,.7); border:1px solid var(--blood-deep);
+  padding: 3px 8px;
+}
+.kombat-art{
+  height: 160px; position:relative; overflow:hidden;
+  border:1px solid var(--line); margin-bottom:12px;
+  background:
+    radial-gradient(80% 60% at 50% 100%, rgba(193,18,31,.4), transparent 70%),
+    linear-gradient(180deg, #1a0a0c, #06030a);
+}
+.kombat-art::before{
+  content:""; position:absolute; inset:0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><path d='M0 79 L40 1 L80 79 Z' fill='none' stroke='%23ffd84a' stroke-opacity='0.06' stroke-width='1'/></svg>");
+  background-size: 80px 80px;
+  animation: scrollPattern 14s linear infinite;
+}
+@keyframes scrollPattern{ to{ background-position: 80px 0 } }
+.kombat-art::after{
+  content: attr(data-art);
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  font-family: var(--f-display); font-weight:900;
+  font-size: 60px; letter-spacing:.04em;
+  background: linear-gradient(180deg, #ffe082, #c1121f 70%, #3b0a0e);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-transform: uppercase;
+  text-shadow: 0 4px 0 rgba(0,0,0,.4);
+  opacity:.7;
+  transition: transform .4s ease, letter-spacing .4s ease;
+}
+.kombat:hover .kombat-art::after{transform:translate(-50%,-50%) scale(1.08); letter-spacing:.08em}
+.kombat:hover .kombat-art{
+  background:
+    radial-gradient(80% 60% at 50% 100%, rgba(255,216,74,.4), transparent 70%),
+    linear-gradient(180deg, #2a1004, #1a0608);
+}
+.kombat h3{
+  font-family: var(--f-display); font-size: 20px; margin: 6px 0 8px; color: var(--ink);
+}
+.kombat p{margin:0;color:var(--ink-dim);font-size:13px}
+.kombat-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.kombat-tags span{
+  font-family:var(--f-mono); font-size:10px; letter-spacing:.18em;
+  padding:3px 8px; color:var(--gold);
+  border:1px solid var(--blood-deep); background: rgba(193,18,31,.1);
+}
+
+/* Training */
+.training-grid{
+  max-width:1100px;margin:0 auto;
+  display:grid; grid-template-columns: repeat(3,1fr); gap:18px;
+}
+.train-card{
+  display:grid;grid-template-columns: 130px 1fr;
+  border:1px solid var(--line);
+  background: linear-gradient(180deg, rgba(20,10,12,.95), rgba(10,6,8,.95));
+  box-shadow: var(--shadow-deep);
+  clip-path: polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+}
+.train-side{
+  background:
+    linear-gradient(180deg, rgba(193,18,31,.4), rgba(58,10,14,.6));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding: 18px 10px; gap:6px;
+  border-right: 1px solid var(--line);
+}
+.train-year{font-family:var(--f-arcade);letter-spacing:.2em;color:var(--gold);font-size:14px;text-align:center}
+.train-tag{
+  font-family:var(--f-arcade);letter-spacing:.3em;font-size:11px;color:#0a0608;background:var(--gold);
+  padding:3px 8px;
+  clip-path: polygon(8% 0,100% 0,92% 100%,0 100%);
+}
+.train-body{padding:18px}
+.train-body h3{font-family:var(--f-display);font-size:18px;margin:0 0 6px;color:var(--ink)}
+.train-body p{margin:0;color:var(--ink-dim);font-size:13px}
+
+/* Kontact */
+.kontact{
+  position:relative; padding: 100px 28px 60px;
+  border-top:1px solid var(--line);
+  overflow:hidden;
+}
+.kontact-bg{
+  position:absolute; inset:0; z-index:0;
+  background:
+    radial-gradient(60% 60% at 50% 60%, rgba(193,18,31,.45), transparent 65%),
+    radial-gradient(40% 50% at 50% 100%, rgba(255,216,74,.2), transparent 70%),
+    linear-gradient(180deg, #0a0608, #1a0608);
+}
+.kontact-bg::before{
+  content:"";position:absolute;inset:0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 200' preserveAspectRatio='none'><g fill='none' stroke='%23ffd84a' stroke-opacity='0.06' stroke-width='1'><path d='M0 180 L100 60 L200 180 L300 40 L400 180 L500 90 L600 180'/></g></svg>");
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+.kontact-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;text-align:center}
+.kontact-tag{
+  font-family:var(--f-arcade); letter-spacing:.5em; color:var(--gold); font-size:14px;
+  margin-bottom: 12px;
+}
+.kontact-h{
+  font-family: var(--f-display); font-weight:900;
+  font-size: clamp(48px, 9vw, 140px); letter-spacing:.08em;
+  background: linear-gradient(180deg, #fff7d8, #ffd84a 35%, #c1121f 75%, #3b0a0e);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin: 0 0 14px;
+  filter: drop-shadow(0 0 30px rgba(193,18,31,.4));
+  animation: vsThrob 3s ease-in-out infinite;
+}
+.kontact-p{color:var(--ink-dim);max-width:560px;margin: 0 auto 36px}
+.kontact-cards{
+  display:grid;grid-template-columns: repeat(4,1fr); gap:14px;
+  text-align:left;
+}
+.kc{
+  position:relative; padding: 16px;
+  border:1px solid var(--line);
+  background: linear-gradient(180deg, rgba(20,10,12,.9), rgba(10,6,8,.9));
+  box-shadow: var(--shadow-deep);
+  transition: transform .2s, border-color .2s;
+  clip-path: polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+}
+.kc[href]:hover{transform:translateY(-3px);border-color:var(--gold)}
+.kc-i{font-size:22px;color:var(--gold);margin-bottom:6px}
+.kc-l{font-family:var(--f-arcade);letter-spacing:.3em;font-size:11px;color:var(--blood)}
+.kc-v{font-family:var(--f-mono);font-size:13px;color:var(--ink);word-break:break-all;margin-top:4px}
+
+.insert-coin{
+  margin-top: 36px; font-family:var(--f-arcade);
+  letter-spacing:.5em; color:var(--gold); font-size:14px;
+  animation: blink 1.4s steps(2) infinite;
+}
+
+.foot{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+  padding: 18px 28px; border-top: 1px solid var(--line);
+  font-size:11px; letter-spacing:.25em; color:var(--ink-mute);
+  font-family:var(--f-arcade);
+}
+
+/* ============================================================
+   Reveal animations
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(28px) scale(.99);transition: opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1080px){
+  .vs{grid-template-columns: 1fr}
+  .vs-side, .vs-center{order: 2}
+  .vs-center{order:1}
+  .arsenal-grid{grid-template-columns: repeat(2,1fr)}
+  .kombat-grid{grid-template-columns: repeat(2,1fr)}
+  .training-grid{grid-template-columns: 1fr}
+  .kontact-cards{grid-template-columns: repeat(2,1fr)}
+
+  .timeline::before{left:18px}
+  .t-item{grid-template-columns: 1fr; padding-left: 40px}
+  .t-item[data-side="L"] .t-card,
+  .t-item[data-side="R"] .t-card{grid-column:1}
+  .t-item[data-side="L"] .t-year,
+  .t-item[data-side="R"] .t-year{grid-column:1;text-align:left;padding:0 0 6px}
+  .t-item::before{left:18px}
+}
+@media (max-width: 720px){
+  .topbar{grid-template-columns:1fr;gap:10px}
+  .topbar-left{justify-content:flex-start}
+  .topnav{justify-self:flex-start;gap:2px}
+  .topnav a{padding:6px 10px;font-size:13px}
+  .topbar-right{display:none}
+  .arsenal-grid, .kombat-grid, .kontact-cards{grid-template-columns: 1fr}
+  .hero{padding: 40px 16px 80px}
+  .section{padding: 60px 16px}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== BOOT / FIGHT INTRO ===== -->
+<div id="boot" class="boot">
+  <div class="boot-grain"></div>
+  <div class="boot-stack">
+    <div class="boot-dragon" aria-hidden="true">
+      <svg class="ad-emblem ad-boot" viewBox="0 0 240 240" width="200" height="200">
+        <use href="#ad-mono"/>
+      </svg>
+    </div>
+    <div class="boot-title">DIBOOO<sup class="boot-tm">™</sup> <span>2026</span></div>
+    <div class="boot-sub">PRESS START · KOMBATANT LOADING</div>
+    <button id="bootBtn" class="boot-btn">▶ ENTER THE ARENA</button>
+  </div>
+</div>
+
+<!-- ===== MASTER AD MONOGRAM (used in boot, topbar) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="adDisc" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#1a0a0c"/>
+      <stop offset="60%" stop-color="#0a0608"/>
+      <stop offset="100%" stop-color="#06030a"/>
+    </radialGradient>
+    <linearGradient id="adLetter" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe082"/>
+      <stop offset="45%" stop-color="#ffd84a"/>
+      <stop offset="100%" stop-color="#c1121f"/>
+    </linearGradient>
+    <linearGradient id="adRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd84a"/>
+      <stop offset="50%" stop-color="#c1121f"/>
+      <stop offset="100%" stop-color="#3b0a0e"/>
+    </linearGradient>
+
+    <symbol id="ad-mono" viewBox="0 0 240 240">
+      <!-- Dark inner disc -->
+      <circle cx="120" cy="120" r="108" fill="url(#adDisc)"/>
+      <!-- Crimson glow inside -->
+      <circle cx="120" cy="110" r="70" fill="#c1121f" opacity="0.18" style="filter:blur(14px)"/>
+      <!-- Outer gold ring -->
+      <circle cx="120" cy="120" r="112" fill="none" stroke="url(#adRing)" stroke-width="3"/>
+      <circle cx="120" cy="120" r="104" fill="none" stroke="#ffd84a" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.55"/>
+      <!-- Tick marks at compass points -->
+      <g stroke="#ffd84a" stroke-width="1.4" opacity="0.85">
+        <line x1="120" y1="4" x2="120" y2="14"/>
+        <line x1="120" y1="226" x2="120" y2="236"/>
+        <line x1="4" y1="120" x2="14" y2="120"/>
+        <line x1="226" y1="120" x2="236" y2="120"/>
+      </g>
+      <!-- AD monogram, centered -->
+      <g font-family="Cinzel, Times New Roman, serif" font-weight="900" text-anchor="middle" dominant-baseline="central">
+        <text x="120" y="125" font-size="118" fill="url(#adLetter)" letter-spacing="-4">AD</text>
+      </g>
+      <!-- Subtle inner highlight -->
+      <circle cx="100" cy="94" r="30" fill="#ffd84a" opacity="0.07"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== SCANLINES + GRAIN OVERLAYS ===== -->
+<div class="scanlines" aria-hidden="true"></div>
+
+
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- ===== AMBIENT FX ===== -->
+<div class="fx-layer" aria-hidden="true">
+  <!-- Floating embers -->
+  <div class="embers">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <!-- Lightning bolts -->
+  <svg class="lightning lightning-1" viewBox="0 0 100 400" preserveAspectRatio="none">
+    <path d="M50 0 L40 110 L62 130 L34 240 L60 260 L30 400" fill="none" stroke="#ffd84a" stroke-width="2"/>
+  </svg>
+  <svg class="lightning lightning-2" viewBox="0 0 100 400" preserveAspectRatio="none">
+    <path d="M50 0 L66 90 L40 120 L70 220 L42 250 L66 400" fill="none" stroke="#ffd84a" stroke-width="2"/>
+  </svg>
+  <!-- Floating runes -->
+  <div class="runes-bg">
+    <span style="--x:8%;--y:18%;--d:0s">⚔</span>
+    <span style="--x:88%;--y:24%;--d:1.6s">☯</span>
+    <span style="--x:14%;--y:72%;--d:3.2s">⚡</span>
+    <span style="--x:82%;--y:78%;--d:0.8s">✦</span>
+    <span style="--x:50%;--y:42%;--d:2.4s">⛧</span>
+    <span style="--x:30%;--y:88%;--d:4s">☷</span>
+    <span style="--x:70%;--y:12%;--d:5.2s">卍</span>
+  </div>
+</div>
+
+<!-- ===== TOP BAR ===== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="logo-mark">
+      <svg class="ad-emblem ad-topbar" viewBox="0 0 240 240" width="36" height="36" aria-hidden="true">
+        <use href="#ad-mono"/>
+      </svg>
+    </div>
+    <div class="logo-txt">
+      <div class="logo-name">DIBOOO<sup class="tm">™</sup></div>
+      <div class="logo-sub">EST · 2026 · ABU DHABI</div>
+    </div>
+  </div>
+  <nav class="topnav">
+    <a href="#fighter">Fighter</a>
+    <a href="#arsenal">Arsenal</a>
+    <a href="#chronicles">Chronicles</a>
+    <a href="#kombats">Kombats</a>
+    <a href="#kontact">Kontact</a>
+  </nav>
+  <div class="topbar-right">
+    <div class="hp">
+      <div class="hp-label">P1 · KREDITS</div>
+      <div class="hp-bar"><span style="width:96%"></span></div>
+      <div class="hp-num">9 YRS</div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO / FIGHTER CARD ===== -->
+<section id="fighter" class="hero">
+  <!-- VS layout: glyph block | name block | stats -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg-flame"></div>
+    <div class="hero-bg-temple"></div>
+    <div class="hero-bg-floor"></div>
+  </div>
+
+  <div class="vs-wrap">
+    <div class="select-tag">SELECT YOUR KOMBATANT</div>
+
+    <!-- HUD overlay -->
+    <div class="hud" aria-hidden="true">
+      <div class="hud-bar hud-bar-l">
+        <div class="hud-name">DIBOOO™</div>
+        <div class="hud-life"><span style="width:96%"></span></div>
+        <div class="hud-rounds"><i class="on"></i><i class="on"></i></div>
+      </div>
+      <div class="hud-timer">99</div>
+      <div class="hud-bar hud-bar-r">
+        <div class="hud-name">YOU</div>
+        <div class="hud-life hud-life-r"><span style="width:42%"></span></div>
+        <div class="hud-rounds"><i></i><i></i></div>
+      </div>
+    </div>
+
+    <div class="vs">
+      <!-- Glyph silhouette -->
+      <div class="vs-side vs-left">
+        <div class="silhouette">
+          <div class="sil-glow"></div>
+          <div class="sil-mono">A.D</div>
+          <div class="sil-runes">
+            <span>⚔</span><span>☯</span><span>⚡</span><span>✦</span>
+          </div>
+        </div>
+        <div class="vs-tag">P1</div>
+      </div>
+
+      <!-- VS center -->
+      <div class="vs-center">
+        <div class="vs-name">
+          <div class="vs-first" data-text="DIBOOO">DIBOOO<sup class="tm-big">™</sup></div>
+          <div class="vs-vs">2026</div>
+          <div class="vs-last" data-text="KOMBATANT">KOMBATANT</div>
+        </div>
+        <div class="vs-title">— AHMED DIAB · THE CODE KHAN —</div>
+        <div class="vs-flavor">"Nine years in the pit. Built systems that bleed uptime."</div>
+      </div>
+
+      <!-- Stats panel -->
+      <div class="vs-side vs-right">
+        <div class="stat-card">
+          <div class="stat-card-title">FIGHTER STATS</div>
+          <ul class="stats">
+            <li><span>POWER</span><i><b style="width:96%"></b></i><em>96</em></li>
+            <li><span>SPEED</span><i><b style="width:88%"></b></i><em>88</em></li>
+            <li><span>DEFENSE</span><i><b style="width:92%"></b></i><em>92</em></li>
+            <li><span>KOMBO</span><i><b style="width:99%"></b></i><em>99</em></li>
+            <li><span>MAGIK</span><i><b style="width:84%"></b></i><em>84</em></li>
+          </ul>
+          <div class="stat-meta">
+            <div><b>STYLE</b> Full Stack</div>
+            <div><b>WEAPON</b> .NET / Angular</div>
+            <div><b>HOME</b> Abu Dhabi, UAE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn-primary" href="#kombats">⚔ VIEW KOMBATS</a>
+      <a class="btn-ghost" href="/cdn-cgi/l/email-protection#0c6d646169682268656d6e39383d38394c6b616d6560226f6361">✉ HAIL THE FIGHTER</a>
+    </div>
+  </div>
+
+  <div class="blood-drip" aria-hidden="true">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,0 L1200,0 L1200,30 C1100,55 1050,15 950,40 C870,60 820,20 720,45 C620,68 560,18 460,42 C360,66 300,20 200,40 C120,55 70,28 0,42 Z" fill="#7a0a10"/>
+      <circle cx="280" cy="62" r="4" fill="#c1121f"/>
+      <circle cx="640" cy="70" r="3" fill="#c1121f"/>
+      <circle cx="980" cy="58" r="5" fill="#c1121f"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== ARSENAL (Skills) ===== -->
+<section id="arsenal" class="section">
+  <div class="section-head">
+    <div class="kanji">秘</div>
+    <h2 class="section-title">ARSENAL</h2>
+    <div class="section-sub">Weapons · Frameworks · Forbidden Techniques</div>
+  </div>
+
+  <div class="arsenal-grid">
+    <div class="weapon">
+      <div class="weapon-icon">⚔</div>
+      <div class="weapon-name">CORE BLADES</div>
+      <ul>
+        <li>C# / .NET / .NET Core</li>
+        <li>ASP.NET MVC · Web API · WCF</li>
+        <li>SignalR · Microservices</li>
+      </ul>
+    </div>
+    <div class="weapon">
+      <div class="weapon-icon">⚡</div>
+      <div class="weapon-name">FRONT FANG</div>
+      <ul>
+        <li>Angular · NgRx (Redux)</li>
+        <li>JavaScript · ES6 · TypeScript</li>
+        <li>HTML5 · CSS3 · Bootstrap · PWA</li>
+      </ul>
+    </div>
+    <div class="weapon">
+      <div class="weapon-icon">☷</div>
+      <div class="weapon-name">DATA RUNES</div>
+      <ul>
+        <li>MS SQL Server</li>
+        <li>Schema Design · Optimization</li>
+        <li>AJAX · REST integrations</li>
+      </ul>
+    </div>
+    <div class="weapon">
+      <div class="weapon-icon">☁</div>
+      <div class="weapon-name">SKY REALM</div>
+      <ul>
+        <li>Azure Hosting</li>
+        <li>Azure DevOps · CI/CD</li>
+        <li>Agile · OOP · SOLID · Patterns</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="finishers">
+    <div class="finisher-tag">FINISHERS</div>
+    <div class="finisher-list">
+      <span>Leadership</span>
+      <span>Problem Analysis</span>
+      <span>Mentoring</span>
+      <span>Presentation</span>
+      <span>Time Management</span>
+      <span>Creative Thinking</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHRONICLES (Timeline) ===== -->
+<section id="chronicles" class="section section-dark">
+  <div class="section-head">
+    <div class="kanji">闘</div>
+    <h2 class="section-title">CHRONICLES</h2>
+    <div class="section-sub">Tournaments survived · 2015 → present</div>
+  </div>
+
+  <ol class="timeline">
+    <li class="t-item" data-side="L">
+      <div class="t-year">2023 — NOW</div>
+      <div class="t-card">
+        <div class="t-rank">REALM I</div>
+        <h3>Senior Software Engineer · ADPorts</h3>
+        <p>Full-stack on <em>HSE Services</em> &amp; <em>GC Appointments</em>. Built dynamic environment systems and multi-channel payment flows. Integrated with the Smart Pass team for driver port access.</p>
+        <div class="t-tags"><span>.NET</span><span>Angular</span><span>Azure</span><span>Payments</span></div>
+      </div>
+    </li>
+    <li class="t-item" data-side="R">
+      <div class="t-year">2020 — 2023</div>
+      <div class="t-card">
+        <div class="t-rank">REALM II</div>
+        <h3>Senior Software Engineer · GET Group</h3>
+        <p>Led full-stack development of a large Sporting Clubs Membership platform. Cross-functional collaboration on new features, performance and code quality.</p>
+        <div class="t-tags"><span>Lead</span><span>.NET</span><span>Angular</span></div>
+      </div>
+    </li>
+    <li class="t-item" data-side="L">
+      <div class="t-year">2019 — 2020</div>
+      <div class="t-card">
+        <div class="t-rank">REALM III</div>
+        <h3>Software Engineer · Orca Tech</h3>
+        <p>Built and maintained a comprehensive HR System. Direct client requirements gathering, security hardening, and performance work.</p>
+        <div class="t-tags"><span>HR System</span><span>Security</span></div>
+      </div>
+    </li>
+    <li class="t-item" data-side="R">
+      <div class="t-year">2018 — 2019</div>
+      <div class="t-card">
+        <div class="t-rank">REALM IV</div>
+        <h3>Software Engineer · Tafeel</h3>
+        <p>Built <em>Masar</em> — admin procedures across ministries. Code reviews, mentoring, compliance with industry standards.</p>
+        <div class="t-tags"><span>Mentor</span><span>Gov</span></div>
+      </div>
+    </li>
+    <li class="t-item" data-side="L">
+      <div class="t-year">2017 — 2018</div>
+      <div class="t-card">
+        <div class="t-rank">REALM V</div>
+        <h3>Software Engineer · Open Mind</h3>
+        <p>Built <em>Competency Set</em> for petroleum companies. Worked alongside UX/UI to refine experience; implemented REST APIs and 3rd-party integrations.</p>
+        <div class="t-tags"><span>REST</span><span>Energy</span></div>
+      </div>
+    </li>
+    <li class="t-item" data-side="R">
+      <div class="t-year">2017 — 2018</div>
+      <div class="t-card">
+        <div class="t-rank">REALM VI</div>
+        <h3>Software Engineer · Brandeshtine</h3>
+        <p>Frontend on <em>Ezdhar</em> e-commerce. Responsiveness, performance, and migration of legacy systems to modern frameworks.</p>
+        <div class="t-tags"><span>Frontend</span><span>Migration</span></div>
+      </div>
+    </li>
+    <li class="t-item" data-side="L">
+      <div class="t-year">2015 — 2016</div>
+      <div class="t-card">
+        <div class="t-rank">REALM VII</div>
+        <h3>Software Engineer · SoftZone</h3>
+        <p>Full-stack across multiple e-commerce builds. DB design and optimization. Stood up CI/CD pipelines.</p>
+        <div class="t-tags"><span>CI/CD</span><span>SQL</span></div>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ===== KOMBATS (Projects) ===== -->
+<section id="kombats" class="section">
+  <div class="section-head">
+    <div class="kanji">技</div>
+    <h2 class="section-title">KOMBATS WON</h2>
+    <div class="section-sub">Signature matches — flawless victories</div>
+  </div>
+
+  <div class="kombat-grid">
+
+    <article class="kombat">
+      <div class="kombat-rank">★ FLAWLESS</div>
+      <div class="kombat-art" data-art="clubs"></div>
+      <h3>Sporting Clubs Membership</h3>
+      <p>Led development of a large membership platform. Shipped new features, hardened performance.</p>
+      <div class="kombat-tags"><span>Lead</span><span>.NET</span><span>Angular</span></div>
+      <div class="kombat-combo">↓ ↘ → + 🥊</div>
+    </article>
+
+    <article class="kombat">
+      <div class="kombat-rank">★ FATALITY</div>
+      <div class="kombat-art" data-art="hr"></div>
+      <h3>HR System</h3>
+      <p>End-to-end HR platform. Gathered client requirements, enhanced security, improved performance.</p>
+      <div class="kombat-tags"><span>HR</span><span>Security</span></div>
+      <div class="kombat-combo">→ ↓ ↘ + 🦵</div>
+    </article>
+
+    <article class="kombat">
+      <div class="kombat-rank">★ BRUTALITY</div>
+      <div class="kombat-art" data-art="masar"></div>
+      <h3>Masar</h3>
+      <p>Facilitated administrative procedures across ministries. Mentored junior devs, ensured compliance.</p>
+      <div class="kombat-tags"><span>Gov</span><span>Mentor</span></div>
+      <div class="kombat-combo">↓ ← ↘ + 🥊🥊</div>
+    </article>
+
+    <article class="kombat">
+      <div class="kombat-rank">★ DOUBLE K.O.</div>
+      <div class="kombat-art" data-art="competency"></div>
+      <h3>Competency Set</h3>
+      <p>Petroleum-sector competency platform. Improved UX with designers; integrated REST APIs.</p>
+      <div class="kombat-tags"><span>Energy</span><span>REST</span></div>
+      <div class="kombat-combo">↘ → ↑ + ⚡</div>
+    </article>
+
+    <article class="kombat">
+      <div class="kombat-rank">★ FLAWLESS</div>
+      <div class="kombat-art" data-art="ezdhar"></div>
+      <h3>Ezdhar</h3>
+      <p>E-commerce frontend. Boosted responsiveness, performance, and migrated legacy code to modern frameworks.</p>
+      <div class="kombat-tags"><span>Frontend</span><span>E-commerce</span></div>
+      <div class="kombat-combo">← → ← + 🛒</div>
+    </article>
+
+    <article class="kombat">
+      <div class="kombat-rank">★ HIDDEN MATCH</div>
+      <div class="kombat-art" data-art="hse"></div>
+      <h3>HSE Services · GC Appointments</h3>
+      <p>Multi-method payments and dynamic env config. Smart-Pass integration validating driver port access.</p>
+      <div class="kombat-tags"><span>Payments</span><span>SmartPass</span></div>
+      <div class="kombat-combo">↓ ↓ ↑ + 🚢</div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== TRAINING (Education / Certs) ===== -->
+<section class="section section-dark">
+  <div class="section-head">
+    <div class="kanji">学</div>
+    <h2 class="section-title">TRAINING GROUNDS</h2>
+    <div class="section-sub">Where the kombatant learned the kombos</div>
+  </div>
+
+  <div class="training-grid">
+    <div class="train-card">
+      <div class="train-side">
+        <div class="train-year">2009 · 2015</div>
+        <div class="train-tag">DOJO</div>
+      </div>
+      <div class="train-body">
+        <h3>Bachelor of Engineering</h3>
+        <p>Mansoura University · Faculty of Engineering. Graduated with a good grade.</p>
+      </div>
+    </div>
+    <div class="train-card">
+      <div class="train-side">
+        <div class="train-year">2016 · 2017</div>
+        <div class="train-tag">SCROLL</div>
+      </div>
+      <div class="train-body">
+        <h3>System Development &amp; BI Diploma</h3>
+        <p>ITI — Information Technology Institute</p>
+      </div>
+    </div>
+    <div class="train-card">
+      <div class="train-side">
+        <div class="train-year">2017 - 2018</div>
+        <div class="train-tag">SECRET</div>
+      </div>
+      <div class="train-body">
+        <h3>Udacity Web Development Pro</h3>
+        <p>Plus: Front-End Nanodegree (One Million Arab Programmer) · ITI Certification</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KONTACT (Footer / CTA) ===== -->
+<section id="kontact" class="kontact">
+  <div class="kontact-bg" aria-hidden="true"></div>
+  <div class="kontact-inner">
+    <div class="kontact-tag">CHALLENGE THE KOMBATANT</div>
+    <h2 class="kontact-h">READY · FIGHT</h2>
+    <p class="kontact-p">Hiring, kontracting, or just want to throw down on a system architecture? Send the signal.</p>
+
+    <div class="kontact-cards">
+      <a class="kc" href="/cdn-cgi/l/email-protection#42232a2f27266c262b2320777673767702252f232b2e6c212d2f">
+        <div class="kc-i">✉</div>
+        <div class="kc-l">EMAIL</div>
+        <div class="kc-v"><span class="__cf_email__" data-cfemail="a3c2cbcec6c78dc7cac2c19697929796e3c4cec2cacf8dc0ccce">[email&#160;protected]</span></div>
+      </a>
+      <a class="kc" href="tel:+971542281362">
+        <div class="kc-i">📞</div>
+        <div class="kc-l">SIGNAL</div>
+        <div class="kc-v">+971 54 228 1362</div>
+      </a>
+      <div class="kc">
+        <div class="kc-i">⌖</div>
+        <div class="kc-l">REALM</div>
+        <div class="kc-v">Khalidiya, Abu Dhabi · UAE</div>
+      </div>
+      <div class="kc">
+        <div class="kc-i">⚑</div>
+        <div class="kc-l">LANGUAGES</div>
+        <div class="kc-v">Arabic (Native) · English</div>
+      </div>
+    </div>
+
+    <div class="insert-coin">— INSERT KOIN TO KONTINUE —</div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div>© <span id="yr"></span> DIBOOO™ · ALL FATALITIES RESERVED</div>
+  <div class="foot-r">BUILT IN HTML · CSS · JS · NO LIBRARIES</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ===== Boot screen =====
+(function(){
+  const boot = document.getElementById('boot');
+  const btn = document.getElementById('bootBtn');
+  function leave(){
+    boot.classList.add('hidden');
+    document.body.style.overflow = '';
+    setTimeout(()=>boot.remove(), 900);
+  }
+  document.body.style.overflow = 'hidden';
+  btn.addEventListener('click', leave);
+  // also leave on key press
+  window.addEventListener('keydown', function f(e){
+    if (e.key === 'Enter' || e.key === ' ') { leave(); window.removeEventListener('keydown', f); }
+  });
+  // auto-skip after 6s if user just stares
+  setTimeout(()=>{ if (document.body.contains(boot)) leave(); }, 6500);
+})();
+
+// ===== Reveal-on-scroll =====
+(function(){
+  const items = document.querySelectorAll('.section, .t-item, .weapon, .kombat, .train-card, .kc');
+  items.forEach(el => el.classList.add('reveal'));
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold: 0.12});
+  items.forEach(el => io.observe(el));
+})();
+
+// ===== Year =====
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// ===== Subtle parallax on hero silhouette =====
+(function(){
+  const sil = document.querySelector('.silhouette');
+  if (!sil) return;
+  const hero = document.querySelector('.hero');
+  hero.addEventListener('mousemove', (e)=>{
+    const r = hero.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5;
+    const y = (e.clientY - r.top) / r.height - .5;
+    sil.style.transform = `perspective(800px) rotateY(${x*5}deg) rotateX(${-y*5}deg)`;
+  });
+  hero.addEventListener('mouseleave', ()=> sil.style.transform = '');
+})();
+
+// ===== Konami code easter egg =====
+(function(){
+  const seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let i = 0;
+  window.addEventListener('keydown', (e)=>{
+    if (e.key.toLowerCase() === seq[i].toLowerCase()) {
+      i++;
+      if (i === seq.length){
+        i = 0;
+        document.body.animate(
+          [{filter:'hue-rotate(0deg)'},{filter:'hue-rotate(360deg)'}],
+          {duration: 2000, iterations: 1}
+        );
+        const flash = document.createElement('div');
+        flash.textContent = 'FATALITY';
+        Object.assign(flash.style, {
+          position:'fixed', inset:0, display:'grid', placeItems:'center',
+          fontFamily:'Cinzel, serif', fontWeight:900, fontSize:'18vw',
+          color:'#c1121f', textShadow:'0 0 40px rgba(193,18,31,.8)',
+          zIndex:200, pointerEvents:'none',
+          background:'radial-gradient(circle at center, rgba(0,0,0,.6), rgba(0,0,0,0) 60%)'
+        });
+        document.body.appendChild(flash);
+        flash.animate(
+          [{opacity:0,transform:'scale(0.6)'},{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(1.4)'}],
+          {duration:2400, easing:'ease-out'}
+        ).onfinish = ()=>flash.remove();
+      }
+    } else { i = 0; }
+  });
+})();
+
+</script>
+</body>
+</html>
